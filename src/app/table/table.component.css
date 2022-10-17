@@ -1,0 +1,49 @@
+@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+p {
+  font-family: Lato;
+}
+*{
+  font-size: 0.8rem;
+}
+table {
+  width: 90%;
+  margin: auto;
+  margin-top: 25px;
+}
+mat-label{
+  color: white;
+}
+.btn-edit {
+  text-align: right;
+}
+h2 {
+  font-size: 2em;
+  color: white;
+  font-weight: 800;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.table-header {
+  width: 90%;
+  margin: auto;
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+::ng-deep .mat-form-field-infix {
+  width: 100% !important;
+}
+
+.form-input {
+  padding-right: 5px;
+}
+.filter{
+  color: white;
+}
+.mat-cell {
+  background: #262829
+}
+.btn-edit:hover{
+  color: red;
+}

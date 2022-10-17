@@ -1,0 +1,28 @@
+
+<div *ngIf="!movies[0]" class="loader"></div>
+<div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xxl-6 g-1">
+  <div class="col" *ngFor="let movie of movies;let i =index">
+    <div class="card" (click)="goToForm(movie)">
+      <div class="card-header">
+         <img class="card-img" src={{movie.img}} alt="Card image">
+      </div>
+      <div class="card-body">
+         <h1 class="card-title">{{movie.MovieName}}</h1>
+         <div class="container">
+            <div class="row">
+               <div class="col-4 metadata">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <p>{{movie.Rating}}/10</p>
+               </div>
+               <div class="col-8 metadata">{{movie.tags}}</div>
+            </div>
+         </div>
+<!--          <a class="btn btn-secondary" routerLink="/form" routerLinkActive="active" >Book now!!</a> -->
+<!--          <p class="card-text">{{movie.description}}</p> -->
+         <a class="trailer-preview" href={{movie.trailer}} target="new">
+            <i class="fa fa-play" aria-hidden="true"></i>
+            </a>
+      </div>
+   </div>
+  </div>
+</div>

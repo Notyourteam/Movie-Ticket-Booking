@@ -1,0 +1,112 @@
+
+<div *ngIf="selected">
+  <img class="card-img" src={{selected.banner}} alt="Card image">
+  <div *ngIf="isShown">
+    <div class="backdrop"></div>
+  </div>
+  <div id="card_container" class="row container-fluid" data-offset="2">
+    <div class="pg">
+ <!--      <img src={{selected.img}}> -->
+    </div>
+    <div id="card" [ngStyle]="{'background': 'url(' + selected.img + ') 50% center' }">
+      <div class="shine"></div>
+      <div class="text-block">
+        <h1>{{selected.MovieName}}</h1>
+        <h3>{{selected.tags}}</h3>
+        <p class="desc">
+          {{selected.description}}
+        </p>
+        <button id="button"(click)="toggleShow()" >Book now</button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isShown" class="row container-fluid"  id="divshow" >
+    <div class="modal">
+      <div *ngIf="!success">
+        <p class="message">Please fillup the details</p>
+        <form #myform="ngForm" appIdentityRevealed>
+        <div class="options">
+          <section class="inputLabel">
+            <input name="name" required class="in" [(ngModel)]="booking.Name" onkeyup="this.setAttribute('value', this.value)" #name="ngModel" minlength="4"/>
+            <label>Full name</label>
+            <div *ngIf="name.invalid && (name.dirty || name.touched)"class="alert">
+              <div *ngIf="name.errors?.['required']">
+                Name is required.
+              </div>
+              <div *ngIf="name.errors?.['minlength']">
+                Name must be at least 4 characters long.
+              </div>
+            </div>
+          </section>
+          <section class="inputLabel">
+            <input (keypress)="numberOnly($event)" name="phone" #phone = "ngModel"  required class="in"[(ngModel)]="booking.phno" onkeyup="this.setAttribute('value', this.value)" maxlength="10" minlength="10"/>
+            <label>Phone number</label>
+            <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"class="alert">
+              <div *ngIf="phone.errors?.['required']">
+                Phone number is required.
+              </div>
+              <div *ngIf="phone.errors?.['minlength']">
+                Phone number must be 10 digits
+              </div>
+            </div>
+          </section>
+          <section class="dropdown">
+            Timing:
+            <div>
+              <select name="two" class=""[(ngModel)]="idx" (change)="setIndex(idx)">
+                <option *ngFor="let time of selected.Showtime; let i = index;"
+                [value]="i"> {{time}} ({{selected.Tickets[i]}} remaining)</option>
+              </select>
+            </div>
+          </section>
+          Seats: <input required class="in" name="noseats" #noseats="ngModel" (change)="checkSeats()" type="number" max="{{selected.Tickets[idx]}}" min=1 step=1 [(ngModel)]="booking.Tickets"/>
+          <div *ngIf="noseats.invalid && (noseats.dirty || noseats.touched)"class="alert">
+            <div *ngIf="noseats.errors?.['required']">
+              required.
+            </div>
+            <div *ngIf="noseats.errors?.['min']">
+              must be greater than 1
+            </div>
+            <div *ngIf="noseats.errors?.['max']">
+              must be greater than {{selected.Tickets[idx]}}
+            </div>
+          </div>
+          <div class="btn-grp">
+            <button  [disabled]="myform.invalid" class="btn sub" type="submit" (click)="ConfirmSeats()">submit</button>
+            <button class="btn can" (click)="toggleShow()">cancel</button>
+          </div>
+        </div>
+        </form>
+      </div>
+      <div *ngIf="success">
+        <h2 class="booked">you're booked!</h2>
+        <div class="passenger-ticket">
+          <div class="passenger-ticket__line">
+            <b>Name:{{booking.Name}}</b>
+          </div>
+          <div class="passenger-ticket__line">
+            <div class="passenger-ticket__data">
+              <b>TIME:</b><br>
+                {{booking.Showtime}}
+            </div>
+            <div class="passenger-ticket__data">
+              <b>MOVIE:</b><br>
+                {{booking.MovieName}}
+            </div>
+            <div class="passenger-ticket__data">
+              <b>SEATS:</b><br>
+                {{booking.Tickets}}
+            </div>
+          </div>
+          <div class="passenger-ticket__bottom">
+            <div class="circle circle-left"></div>
+            <div class="circle circle-right"></div>
+          </div>
+        </div>
+        <button class="btn" (click)="toggleShow()">close</button>
+        <button class="btn" (click)="bookagain()">book again</button>
+      </div>
+    </div>
+  </div>
+</div>
+

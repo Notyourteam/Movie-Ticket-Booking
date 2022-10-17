@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
+@import url("https://fonts.googleapis.com/css?family=Fredericka+the+Great");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css");
+@import url('https://fonts.googleapis.com/css?family=Arimo:400,700');
+
+*{
+  transition: 300ms;
+}
+img{
+  height: auto;
+  max-width: 100%;
+}
+.col-md-5, .description {
+  padding: 0;
+}
+
+.description {
+  font-family: "Fredericka the Great", cursive;
+  text-align: center;
+}
+.card{
+  background: #222;
+  border: 1px solid #dd2476;
+  color: rgba(250, 250, 250, 0.8);
+  margin-bottom: 4rem;
+}
+.card-header, .metadata {
+  background: none;
+  padding: 0;
+  position: relative;
+  border-style: none;
+}
+
+.metadata {
+  font-size: 14px;
+}
+.metadata i, .metadata p {
+  float: left;
+}
+.metadata p {
+  margin-top: 0;
+  margin-left: 10px;
+}
+.metadata i {
+  color: #ff9d00;
+  margin-top: 5px;
+  margin-left: 1px;
+}
+
+.card-img {
+  height: auto;
+  margin-top: -10%;
+  margin-bottom: 20%;
+}
+
+.card-body {
+  background: #222;
+  position: relative;
+  margin-top: -20%;
+  color: #9FA7A9;
+}
+.card-body .card-title {
+  padding-top: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: x-large;
+  font-weight: 600;
+  color: #ffffff;
+}
+.card-title{
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}
+.card-body .card-text {
+
+  margin-top: 8px;
+  font-weight: 400;
+  line-height: 30px;
+  height: auto;
+  display:none
+}
+
+.card, .trailer-preview {
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.056),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.081), 0 12.5px 10px rgba(0, 0, 0, 0.1),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.119),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.144), 0 100px 80px rgba(0, 0, 0, 0.2);
+}
+.card:hover, .trailer-preview:hover {
+  transform:scale(0.9);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.18);
+}
+.card-body:hover .card-text{
+  display: flex;
+}
+.card {
+  cursor: pointer;
+  border-radius: 4pt;
+  border-style: none;
+  overflow: hidden;
+  transform: scale(0.8);
+  margin-top: 0px;
+}
+
+.trailer-preview {
+  background-color: #c4302b;
+  position: absolute;
+  top: -46px;
+  right: 8px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  color: white;
+  font-size: 36px;
+  text-align: center;
+  padding-top: 8px;
+}
+.trailer-preview:hover, .trailer-preview:disabled, .trailer-preview:active, .trailer-preview:focus {
+  background-color: white;
+  color: #c4302b;
+}
+.trailer-preview i {
+  margin-left: 5px;
+}
+.col{
+  margin-bottom: -100px;
+}
+.card-header{
+  height: 25rem;
+}
+.loader {
+  top: 50%;
+  left: 50%;
+  color: #ffffff;
+  position: absolute;
+  width: 10em;
+  border-radius: 50%;
+  height: 10em;
+  box-shadow: inset 0 0 0 1em;
+  transform: translate3d(-50%, -50%, 0);
+}
+.loader:before,
+.loader:after {
+  position: absolute;
+  content: '';
+  border-radius: 50%;
+}
+.loader:before {
+  width: 5.2em;
+  height: 10.2em;
+  background: #2a4f65;
+  border-radius: 10.2em 0 0 10.2em;
+  top: -0.1em;
+  left: -0.1em;
+  transform-origin: 5.2em 5.1em;
+  animation: load 2s infinite ease 1.5s;
+}
+.loader:after {
+  width: 5.2em;
+  height: 10.2em;
+  background: #2a4f65;
+  border-radius: 0 10.2em 10.2em 0;
+  top: -0.1em;
+  left: 5.0em;
+  transform-origin: 0px 5.1em;
+  animation: load 2s infinite ease;
+}
+@keyframes load {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
